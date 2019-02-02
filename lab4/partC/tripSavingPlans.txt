@@ -1,0 +1,5 @@
+Hawaii   90
+Brazil   300
+Italy    200
+New_York 75
+China    5000
