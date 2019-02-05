@@ -70,9 +70,9 @@ int main()
 
 int money_test(int trip_money){
 
-    double x = 0;
-    double y = 0;
-    double z = 0.02;
+    double x = 0,
+           y = 0,
+           z = 0.02;
     int day = 0;
 
     for(double y = 0; x <= (double)trip_money; z = y*2){

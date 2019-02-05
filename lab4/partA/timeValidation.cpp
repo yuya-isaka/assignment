@@ -1,90 +1,66 @@
-#include<iostream>
-#include<fstream>
-#include<string>
-using namespace std;
+#include <iostream>
+#include <string>
+#include <fstream>
 
-int main(){
+bool HourTest(int);
+bool MinuteTest(int);
 
-    int validateHour,
-        validateMinutes,
-        x = 0,
-        y = 0;
+int main()
+{
 
-    string file_name,
-           file_name2;
+    std::ifstream inputfile;
+    std::ofstream outputfile;
+    unsigned int Hour,
+                 Minutes;
 
-    ifstream inputfile;
+    inputfile.open("timeDate.txt");
+    outputfile.open("timeValidation.txt");
 
-    ofstream outputfile;
+    if(inputfile && outputfile){
 
-
-    cout << "読み出すファイル名を入力してください。" << endl;
-
-
-    while(x == 0){
-        cin >> file_name;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore('\n');
-            cout << "入力を間違えています。もう一度やり直してください。" << endl;
-        }
-        else{
-            cout << "入力されたファイル名は" << file_name << "ですね。" << endl;
-            x = 1;
-        }
-    }
-
-
-
-    cout << "読み出すファイル名を入力してください。" << endl;
-
-
-    while(y == 0){
-        cin >> file_name2;
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore('\n');
-            cout << "入力を間違えています。もう一度やり直してください。" << endl;
-        }
-        else{
-            cout << "入力されたファイル名は" << file_name2 << "ですね。" << endl;
-            y = 1;
-        }
-    }
-
-
-
-    inputfile.open(file_name);
-    outputfile.open(file_name2);
-
-
-    if(inputfile){
-        while(inputfile >> validateHour >> validateMinutes){
-            if(validateHour > validateMinutes){
-                int a = validateMinutes;
-                validateMinutes = validateHour;
-                validateHour = a;
+        while(inputfile >> Hour >> Minutes){
+            if(HourTest(Hour) && MinuteTest(Minutes)){
+                std::cout << Hour << ":" << Minutes << "hours and minutes are valid " << std::endl;
+                outputfile << Hour << ":" << Minutes << "hours and minutes are valid " << std::endl;
             }
-            if((validateHour == 13) && (validateMinutes == 45)){
-                outputfile << validateHour << ":" << validateMinutes << "hours and minutes are valid" << endl;
+            else if(HourTest(Hour) && !(MinuteTest(Minutes))){
+                std::cout << Hour << ":" << Minutes << "hour is valid and minutes are invalid" << std::endl;
+                outputfile << Hour << ":" << Minutes << "hour is valid and minutes are invalid" << std::endl;
             }
-            else if((validateHour == 25) && (validateMinutes == 30)){
-                outputfile << validateHour << ":" << validateMinutes << "hour is invalid minutes are valid" << endl;
+            else if(!HourTest(Hour) && (MinuteTest(Minutes))){
+                std::cout << Hour << ":" << Minutes << "hour is invalid minutes are valid " << std::endl;
+                outputfile << Hour << ":" << Minutes << "hour is invalid minutes are valid " << std::endl;
             }
-            else if((validateHour == 11) && (validateMinutes == 33)){
-                outputfile << validateHour << ":" << validateMinutes << "hour is valid and minutes are valid" << endl;
-            }
-            else if((validateHour == 26) && (validateMinutes == 61)){
-                outputfile << validateHour << ":" << validateMinutes << "hour and minutes are both invalid" << endl;
+            else if(!(HourTest(Hour) && MinuteTest(Minutes))){
+                std::cout << Hour << ":" << Minutes << "hour and minutes are both invalid" << std::endl;
+                outputfile << Hour << ":" << Minutes << "hour and minutes are both invalid" << std::endl;
             }
         }
-        inputfile.close();
-        outputfile.close();
     }else{
-        cout << "ファイルを開くことが出来ませんでした。" << endl;
+        std::cout << "ファイルを読み込み出力することができませんでした。" << std::endl;
     }
 
 
+    inputfile.close();
+    outputfile.close();
+}
 
-    return 0;
+
+
+bool HourTest(int a)
+{
+    bool result;
+
+    if (a <= 24)
+        result = 1;
+    return result;
+}
+
+bool MinuteTest(int a)
+{
+    bool result;
+
+    if(a <= 60)
+        result = 1;
+    return result;
 }
