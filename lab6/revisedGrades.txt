@@ -1,0 +1,6 @@
+             Name            Exam1            Exam2            Exam3     TotalOfScore     AverageScore
+             John             90.9             80.4             60.0            231.3             77.1
+             Jane             87.0             81.6             91.0            490.9            163.6
+             Bill             95.5             92.8             88.0            767.2            255.7
+            Susan             75.0             86.4             80.0           1008.6            336.2
+ AverageTestScore             87.1            172.4            252.2            876.7           1084.8

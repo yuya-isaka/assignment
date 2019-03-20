@@ -1,0 +1,9 @@
+ Name    Exam1   Exam2   Exam3
+
+John      90.9        69.9        60.0
+
+Jane       87.0        71.0        91.0
+
+Bill          95.5        80.7        88.0
+
+Susan    75.0        75.1        80.0
