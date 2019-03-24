@@ -17,6 +17,11 @@ int main(){
     //unsortedData.txtファイルからデータを配列に読み込む
     ifstream inputfile;
     inputfile.open("unsortedData.txt");
+    if(!inputfile){
+        cout << "ファイルを開くことができませんでした。" << endl;
+        cout << "プログラムを終了します。" << endl;
+        exit(1);
+    }
     int numBox;
     while(inputfile >> numBox){
         selectionArray.push_back(numBox);
@@ -41,6 +46,20 @@ int main(){
         cout << selectionArray[i] << endl;
     }
 
+    //選択ソートされたデータをファイルに読み込む
+    ofstream outputfile;
+    outputfile.open("sortedSelectionData.txt");
+    if(!outputfile){
+        cout << "ファイルを開くことができませんでした。" << endl;
+        cout << "プログラムを終了します。" << endl;
+        exit(1);
+    }
+    for(int i = 0; i < selectionArray.size(); i++){
+        outputfile << selectionArray[i] << endl;
+    }
+    outputfile.close();
+    outputfile.clear();
+
     //バブルソートの計算をして何回交換したかを出力
     cout << endl << "バブルソートします。" << endl;
     int changeCounter2 = bubbleSort(bubbleArray);
@@ -51,6 +70,18 @@ int main(){
     for(int i = 0; i < bubbleArray.size(); i++){
         cout << bubbleArray[i] << endl;
     }
+
+    //バブルソートされたデータをファイルに読み込む
+    outputfile.open("sortedBubbleData.txt");
+    if(!outputfile){
+        cout << "ファイルを開くことができませんでした。" << endl;
+        cout << "プログラムを終了します。" << endl;
+        exit(1);
+    }
+    for(int i = 0; i < bubbleArray.size(); i++){
+        outputfile << bubbleArray[i] << endl;
+    }
+    outputfile.close();
 
 }
 
