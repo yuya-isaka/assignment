@@ -18,6 +18,10 @@ bool asc( const Score& left, const Score& right ) {
     return /*もしスコアが同じ場合は名前のアルファベット順で比較するという作業が書かれている。でも原理を理解してない、ここでは意味ないからコメントアウト。left.averageScore == right.averageScore ? left.studentName < right.studentName :*/ left.averageScore < right.averageScore;
 }
 
+bool asc2(const Score& left, const Score& right){
+    return left.studentName < right.studentName;
+}
+
 int main(){
     int test; //テストの個数
 
@@ -88,8 +92,18 @@ int main(){
 
     inputfile.close();
 
-    //配列をsortする。
+    //スコアでソート
     sort(scoreArray.begin(), scoreArray.end(), asc);
+
+    //結果を表示
+    cout << "結果を表示します。" << endl;
+    for(int i = 0; i < student; i++){
+        cout << "name :" << setw(10) << scoreArray[i].studentName << "  ";
+        cout << "score :" << setw(10) << scoreArray[i].averageScore << endl;
+    }
+
+    //名前でソート
+    sort(scoreArray.begin(), scoreArray.end(), asc2);
 
     //結果を表示
     cout << "結果を表示します。" << endl;
