@@ -21,7 +21,7 @@ int main(){
         advantageSize,
         medianOfClass1,
         medianOfClass2;
-    static const int testOfNumber = 10;
+     const int testOfNumber = 10;
     vector<int> advantage;
 
     cout << "ファイルから数値を配列に書き込みます。" << endl;
