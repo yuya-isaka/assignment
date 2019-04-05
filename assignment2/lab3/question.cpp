@@ -5,7 +5,7 @@ using namespace std;
 
 Question::Question()
 {
-    questionX = "";
+    question = "";
     answer1 = "";
     answer2 = "";
     answer3 = "";
@@ -16,19 +16,17 @@ Question::Question()
 
 Question::Question(string question, string ans1, string ans2, string ans3, string ans4, unsigned short int correct)
 {
-    
-    questionX = question;
-    answer1 = ans1;
-    answer2 = ans2;
-    answer3 = ans3;
-    answer4 = ans4;
-    correctAnswer = correct;
-    
+    setQuestion(question);
+    setAnswer1(ans1);
+    setAnswer2(ans2);
+    setAnswer3(ans3);
+    setAnswer4(ans4);
+    setCorrect(correct);
 }
 
-void Question::setQuestion(string question)
+void Question::setQuestion(string questionX)
 {
-    questionX = question;
+    question = questionX;
 }
 void Question::setAnswer1(string ans)
 {
@@ -54,7 +52,7 @@ void Question::setCorrect(unsigned short int correct)
 
 string Question::getQuestion()
 {
-    return questionX;
+    return question;
 }
 string Question::getAnswer1()
 {

@@ -15,7 +15,7 @@ using namespace std;
 
 class Question {
 private:
-    string questionX;
+    string question;
     string answer1;
     string answer2;
     string answer3;
@@ -25,7 +25,7 @@ private:
 public:
     Question();
     Question(string question, string ans1, string ans2, string ans3, string ans4, unsigned short int correct);
-    void setQuestion(string question);
+    void setQuestion(string questionX);
     void setAnswer1(string ans);
     void setAnswer2(string ans);
     void setAnswer3(string ans);
